@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Page Scrolling with jQuery and Bootstrap</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Helvetica Neue', arial, sans-serif;
+}
+.header {
+	position: fixed;
+	width: 100%;
+	background: #222;
+	z-index: 10;
+}
+.header .navbar-brand {
+	font-weight: 900;
+}
+.header .navbar {
+	margin: 0;
+	border: none;
+}
+.page-section {
+	width: 100%;
+	min-height: 800px;
+	padding: 50px 0;
+	border-bottom: 10px solid #fff;
+}
+.page-section h1 {
+	font-size: 4em;
+	margin: 50px 0;
+}
+.page-section h1 span {
+	font-weight: 200;
+}
+.page-section h2 {
+	font-size: 3em;
+	font-weight: 900;
+	color: #fff;
+	margin: 0 0 30px;
+	text-shadow: 2px 2px 2px #000;
+}
+.page-section p {
+	font-size: 1.2em;
+	font-weight: 200;
+	margin: 0 25% 20px 0;
+}
+.page-section p.lead {
+	font-size: 1.8em;
+}
+.page-section p.caption {
+	color: #fff;
+	padding: 20px;
+	background: url(images/trans_black_25.png);
+	text-shadow: 1px 1px 1px #000;
+}
+.page-section.intro {
+	min-height: 600px;
+}
+.page-section#africa {
+	background: url(images/africa.jpg) bottom center no-repeat;
+}
+.page-section#antarctica {
+	background: url(images/antarctica.jpg) bottom center no-repeat;
+}
+.page-section#asia {
+	background: url(images/asia.jpg) top center no-repeat;
+}
+.page-section#australia {
+	background: url(images/australia.jpg) top center no-repeat;
+}
+.page-section#europe {
+	background: url(images/europe.jpg) top center no-repeat;
+}
+.page-section#north-america {
+	background: url(images/north-america.jpg) top center no-repeat;
+}
+.page-section#south-america {
+	background: url(images/south-america.jpg) top center no-repeat;
+}
+.btn {
+	font-weight: 200;
+}
+.btn-dark {
+	background: #444;
+	color: #fff;
+}
+.btn-dark:hover {
+	background: #000;
+	color: #fff;
+}
+.back-to-top {
+	display: inline-block;
+	clear: both;
+	background: #fff;
+	color: #333;
+	padding: 0 10px 5px;
+	margin: 20px 0 0;
+	text-shadow: none;
+}
+.back-to-top:hover {
+	background: #333;
+	color: #fff;
+	text-decoration: none;
+}
+hr {border-color: #ddd;}
+
+@media (min-width: 768px) {
+	.header .navbar-brand {
+		padding-left: 0;
+	}
+	.navbar-nav {
+		float: right;
+	}
+}
+@media (max-width: 480px) {
+	.page-section h1 {
+		font-size: 3em;
+	}
+	.page-section h2 {
+		font-size: 2em;
+	}
+	.page-section p {
+		font-size: 1em;
+		margin: 0 0 20px;
+	}
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+	<div class="container">
+		<nav class="navbar navbar-inverse" role="navigation">
+        	<div class="navbar-header">
+	            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+	            </button>
+	            <a href="#" class="navbar-brand scroll-top">Demo</a>
+        	</div>
+        	<!--/.navbar-header-->
+	        <div id="main-nav" class="collapse navbar-collapse">
+	            <ul class="nav navbar-nav">
+		            <li><a href="#" class="scroll-link" data-id="africa">Africa</a></li>
+					<li><a href="#" class="scroll-link" data-id="antarctica">Antarctica</a></li>
+					<li><a href="#" class="scroll-link" data-id="asia">Asia</a></li>
+					<li><a href="#" class="scroll-link" data-id="australia">Australia</a></li>
+					<li><a href="#" class="scroll-link" data-id="europe">Europe</a></li>
+					<li><a href="#" class="scroll-link" data-id="north-america">North America</a></li>
+					<li><a href="#" class="scroll-link" data-id="south-america">South America</a></li>
+	            </ul>
+	        </div>
+	        <!--/.navbar-collapse-->
+	    </nav>
+	    <!--/.navbar-->
+	</div>
+	<!--/.container-->
+</div>
+<!--/.header-->
+
+<div class="page-section intro">
+	<div class="container">
+		<h1>Responsive Page Scrolling<br/><span>with jQuery and Bootstrap</span></h1>
+		<p class="lead">Use the navigation above to scroll to different page sections. You can also jump right to specific sections with the buttons below:</p>
+		<p>
+			<a href="#" class="scroll-link btn btn-dark" data-id="asia">Scroll to Asia</a>
+			<a href="#" class="scroll-link btn btn-dark" data-id="europe">Scroll to Europe</a>
+		</p>
+		<hr/>
+		<p>Demo by <a href="http://alijafarian.com">Ali Jafarian</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/.page-section-->
+
+<div id="africa" class="page-section">
+	<div class="container">
+		<h2>Africa</h2>
+		<p class="caption">Africa is the world's second-largest and second-most-populous continent. At about 30.2 million km<sup>2</sup> (11.7 million sq mi) including adjacent islands, it covers six percent of the Earth's total surface area and 20.4 percent of the total land area. With 1.0 billion people (as of 2009, see table), it accounts for about 15% of the world's human population.</p>
+		<p class="caption">The continent is surrounded by the Mediterranean Sea to the north, both the Suez Canal and the Red Sea along the Sinai Peninsula to the northeast, the Indian Ocean to the southeast, and the Atlantic Ocean to the west. The continent includes Madagascar and various archipelagoes. It has 54 fully recognized sovereign states ("countries"), 9 territories and two de facto independent states with limited or no recognition.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#africa-->
+
+<div id="antarctica" class="page-section">
+	<div class="container">
+		<h2>Antarctica</h2>
+		<p class="caption">Antarctica, on average, is the coldest, driest, and windiest continent, and has the highest average elevation of all the continents.[4] Antarctica is considered a desert, with annual precipitation of only 200 mm (8 inches) along the coast and far less inland. The temperature in Antarctica has reached −89 °C (−129 °F). There are no permanent human residents, but anywhere from 1,000 to 5,000 people reside throughout the year at the research stations scattered across the continent. Only cold-adapted organisms survive there, including many types of algae, animals (for example mites, nematodes, penguins, seals and tardigrades), bacteria, fungi, plants, and protista. Vegetation where it occurs is tundra.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#antarctica-->
+
+<div id="asia" class="page-section">
+	<div class="container">
+		<h2>Asia</h2>
+		<p class="caption">Asia is the world's largest and most populous continent, located primarily in the eastern and northern hemispheres. It covers 8.7% of the Earth's total surface area and comprises 30% of its land area. With approximately 4.3 billion people, it hosts 60% of the world's current human population. Asia has a high growth rate in the modern era. For instance, during the 20th century, Asia's population nearly quadrupled.</p>
+		<p class="caption">Given its size and diversity, Asia - a toponym dating back to classical antiquity - "is more a cultural concept" incorporating diverse regions and peoples than a homogeneous physical entity. Asia differs very widely among and within its regions with regard to ethnic groups, cultures, environments, economics, historical ties and government systems.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#asia-->
+
+<div id="australia" class="page-section">
+	<div class="container">
+		<h2>Australia</h2>
+		<p class="caption">A highly developed country and one of the wealthiest, Australia is the world's 12th-largest economy and has the world's fifth-highest per capita income. Australia's military expenditure is the world's 13th-largest. With the second-highest human development index globally, Australia ranks highly in many international comparisons of national performance, such as quality of life, health, education, economic freedom, and the protection of civil liberties and political rights. Australia is a member of the G20, OECD, WTO, APEC, UN, Commonwealth of Nations, ANZUS, and the Pacific Islands Forum.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#australia-->
+
+<div id="europe" class="page-section">
+	<div class="container">
+		<h2>Europe</h2>
+		<p class="caption">Europe is the world's second-smallest continent by surface area, covering about 10,180,000 square kilometres (3,930,000 sq mi) or 2% of the Earth's surface and about 6.8% of its land area. Of Europe's approximately 50 countries, Russia is by far the largest by both area and population, taking up 40% of the continent (although the country has territory in both Europe and Asia), while Vatican City is the smallest.</p>
+		<p class="caption">Europe, in particular Ancient Greece and Ancient Rome, is the birthplace of Western culture.[4] It played a predominant role in global affairs from the 15th century onwards, especially after the beginning of colonialism. Between the 16th and 20th centuries, European nations controlled at various times the Americas, most of Africa, Oceania, and large portions of Asia.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#europe-->
+
+<div id="north-america" class="page-section">
+	<div class="container">
+		<h2>North America</h2>
+		<p class="caption">North America is a continent wholly within the Northern Hemisphere and almost wholly within the Western Hemisphere. It is also considered a northern subcontinent of the Americas. It is bordered to the north by the Arctic Ocean, to the east by the Atlantic Ocean, to the west and south by the Pacific Ocean, and to the southeast by South America and the Caribbean Sea.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#north-america-->
+
+<div id="south-america" class="page-section">
+	<div class="container">
+		<h2>South America</h2>
+		<p class="caption">South America has an area of 17,840,000 square kilometers (6,890,000 sq mi). Its population as of 2005 has been estimated at more than 371,090,000. South America ranks fourth in area (after Asia, Africa, and North America) and fifth in population (after Asia, Africa, Europe, and North America).</p>
+		<p class="caption">Most of the population lives near the western or eastern coasts of the continent while the interior and the far south are sparsely populated. The geography of western South America is dominated by the Andes mountains; in contrast, the eastern part contains both highland regions and large river basins such as the Amazon, Paraná and Orinoco. Most of the continent lies in the tropics.<br/><a href="#" class="scroll-top back-to-top">&uarr;</a></p>
+	</div>
+	<!--/.container-->
+</div>
+<!--/#north-america-->
+
+<div class="page-section">
+	<div class="container">
+		<h3>Thanks for checking out this demo!</h3>
+		<p>I hope it's useful in your projects.</p>
+		<hr/>
+		<p>Demo by <a href="http://alijafarian.com">Ali Jafarian</a></p>
+	</div>
+</div>
+<!--/.page-section-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	// navigation click actions	
+	$('.scroll-link').on('click', function(event){
+		event.preventDefault();
+		var sectionID = $(this).attr("data-id");
+		scrollToID('#' + sectionID, 750);
+	});
+	// scroll to top action
+	$('.scroll-top').on('click', function(event) {
+		event.preventDefault();
+		$('html, body').animate({scrollTop:0}, 'slow'); 		
+	});
+	// mobile nav toggle
+	$('#nav-toggle').on('click', function (event) {
+		event.preventDefault();
+		$('#main-nav').toggleClass("open");
+	});
+});
+// scroll function
+function scrollToID(id, speed){
+	var offSet = 50;
+	var targetOffset = $(id).offset().top - offSet;
+	var mainNav = $('#main-nav');
+	$('html,body').animate({scrollTop:targetOffset}, speed);
+	if (mainNav.hasClass("open")) {
+		mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+		mainNav.removeClass("open");
+	}
+}
+if (typeof console === "undefined") {
+    console = {
+        log: function() { }
+    };
+}
+</script>
+</body>
+</html>
